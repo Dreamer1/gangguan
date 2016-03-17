@@ -1,0 +1,31 @@
+{template "content","header"}
+	<div class="aboutcon center">
+		<div class="about_left left">
+		<h1><span>{$CATEGORYS[$catid]['catdir']}</span><br><p>{str_cut($CATEGORYS[$catid]['catname'],13)}</p></h1>
+		<ul class="classify">
+			<h2>产品分类</h2>
+			{pc:content action="category" catid="7" num="15" siteid="$siteid" order="listorder ASC"}
+				{loop $data $r}
+				<li><a href="{$r[url]}"><b>·</b> {$r[catname]}</a></li>
+				{/loop}
+			{/pc}				
+		</ul>
+		<h3><a href="{$CATEGORYS[11]['url']}">联系我们</a></h3>
+		</div>
+		<div class="about_right left">
+			<h2><a href="{siteurl($siteid)}">网站首页</a> &gt; {catpos($catid)} 正文</h2>
+			<div class="list">
+			{pc:content action="lists" catid="$catid" num="25" order="id DESC" page="$page"}
+			<ul>
+			{loop $data $r}
+				<li><span class="right">{date('Y-m-d H:i:s',$r[inputtime])}</span>·<a href="{$r[url]}" target="_blank"{title_style($r[style])}>{$r[title]}</a></li>
+			{if $n%5==0}<li class="hr"></li>{/if}
+			{/loop}
+				</ul>
+			<div id="pages" class="text-c">{$pages}</div>
+			{/pc}
+			</div>
+			</div>
+	</div>	
+</div>
+{template "content","footer"}

@@ -1,0 +1,37 @@
+{template "content","header"}
+	<div class="aboutcon center">
+		<div class="about_left left">
+		<h1><span>Contact Us</span><br><p>联系我们</p></h1>
+		<ul class="classify">
+			<h2>产品分类</h2>
+			
+			{pc:content action="category" catid="7" num="15" siteid="$siteid" order="listorder ASC"}
+				{loop $data $r}
+				<li><a href="{$r[url]}"><b>·</b> {$r[catname]}</a></li>
+				{/loop}
+			{/pc}				
+		</ul>
+		<h3><a href="{$CATEGORYS[11]['url']}">联系我们</a></h3>
+		</div>
+		<div class="about_right left">
+		<div class="about_right left">
+			<h2><a href="{siteurl($siteid)}">网站首页</a> &gt; {catpos($catid)} 正文</h2>
+			<div class="info">
+				<div class="info_title"><h4>{$title}</h4></div>
+				<div class="info_time"></div>
+				{if $description}<div class="info_description">核心提示：{$description}</div>{/if}
+				<div class="info_content">
+				{$content}
+				</div>
+				<div id="pages">{$pages}</div>
+				<div class="info_service">
+						<span class="favorites"><a href="javascript:window.external.addFavorite(window.location.href,'新闻 ');">加入收藏</a></span>
+						<span class="print"><a href="javascript:window.print();">打印本页</a></span>
+						<span class="close"><a href="javascript:window.close();">关闭窗口</a></span>
+						<span class="top"><a href="javascript:window.scrollTo(0,0);">返回顶部</a></span>
+				</div>
+			</div>
+		</div>
+	</div>	
+</div>
+{template "content","footer"}

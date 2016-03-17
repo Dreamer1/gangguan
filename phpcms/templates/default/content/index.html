@@ -1,0 +1,47 @@
+{template "content","header"}
+<!--main-->
+	<div class="banner center">
+		<object id="player" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=9,0,28,0" width="992" height="347" >
+						<param name="movie" value="{siteurl($siteid)}/imageshow.swf" />
+						<param name="quality" value="high" />
+						<param name="allowScriptAccess" value="always" />
+						<param name="allowFullScreen" value="true" />
+						<param name="wmode" value="Transparent" />
+						<embed wmode="transparent" src="{siteurl($siteid)}/imageshow.swf" quality="high" allowscriptaccess="always" allowFullScreen="true"  pluginspage="http://www.adobe.com/shockwave/download/download.cgi?P1_Prod_Version=ShockwaveFlash" type="application/x-shockwave-flash" width="992" height="347"></embed>
+		</object>
+	</div>
+	<div class="content center">
+		<div class="news left">
+			<span class="more"><a href="{$CATEGORYS[8]['url']}">more</a></span>
+			<ul>
+			{pc:content action="lists" catid="8" num="6" order="id DESC" return="info"}
+			{loop $info $v}
+			<li><a href="{$v['url']}" title="{$v['title']}" target="_blank">{str_cut($v['title'],44)}</a></li>
+			{/loop}
+			{/pc} 
+			</ul>
+		</div>
+		<div class="about left">
+			<span class="more"><a href="{$CATEGORYS[6]['url']}">more</a></span>
+			<img src="{IMG_PATH}about_img.jpg"/>
+			<p>
+			{pc:get sql="SELECT * FROM gx_page" catid="6" num="1"}
+			{loop $data  $r}
+				{str_cut(strip_tags($r[content]),170)}
+			{/loop}
+			{/pc}
+			<a href="{$CATEGORYS[6]['url']}">[更多]</a></p>
+		</div>
+		<div class="contact left">
+			<span class="tel">(+86)0566-5211345</span>
+			<p>生产基地：安徽池州经济开发区通港大道特1号</p>
+			<p class="add"> 浙江杭州江南经济开发区富春江路18号</p>
+			<p>销售总部：安徽池州世纪广场</p>
+			<ul class="online">
+				<li class="left"><img src="{IMG_PATH}code.jpg" /><li>
+				<li class="code left">手机扫描左侧二维码快速获取联系方式<li>
+			</ul>
+		</div>
+	</div>
+</div>
+{template "content","footer"}
